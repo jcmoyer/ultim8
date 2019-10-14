@@ -29,31 +29,31 @@ data 0b11110000,
      0b11110000
 
 start:
-	ld v0, 1
-	ld v1, 1
+  ld v0, 1
+  ld v1, 1
 
-	ld i, glyph_h
-	disp v0, v1, 5
+  ld i, glyph_h
+  disp v0, v1, 5
 
-	add v0, 5
+  add v0, 5
 
-	ld i, glyph_e
-	disp v0, v1, 5
+  ld i, glyph_e
+  disp v0, v1, 5
 
-	add v0, 5
+  add v0, 5
 
-	ld i, glyph_l
-	disp v0, v1, 5
+  ld i, glyph_l
+  disp v0, v1, 5
 
-	add v0, 5
+  add v0, 5
 
-	disp v0, v1, 5
+  disp v0, v1, 5
 
-	add v0, 5
+  add v0, 5
 
-	ld i, glyph_o
-	disp v0, v1, 5
+  ld i, glyph_o
+  disp v0, v1, 5
 
 loop:
-	; stop the program counter from incrementing
-	jmp loop
+  ; stop the program counter from incrementing
+  jmp loop
