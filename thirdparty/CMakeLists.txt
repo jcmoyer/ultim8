@@ -1,0 +1,10 @@
+set(SDL_STATIC ON CACHE BOOL "link SDL2 statically")
+set(SDL_SHARED OFF CACHE BOOL "link SDL2 statically")
+add_subdirectory("SDL2" EXCLUDE_FROM_ALL)
+add_subdirectory("gl3w" EXCLUDE_FROM_ALL)
+add_subdirectory("imgui" EXCLUDE_FROM_ALL)
+add_subdirectory("fmt" EXCLUDE_FROM_ALL)
+add_subdirectory("catch2" EXCLUDE_FROM_ALL)
+
+set(toml11_BUILD_TEST OFF CACHE BOOL "do not build toml11 tests")
+add_subdirectory("toml11")

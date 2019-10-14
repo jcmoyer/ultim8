@@ -1,0 +1,59 @@
+jmp start
+
+;
+; sprite data for the letters H E L O
+;
+glyph_h:
+data 0b10010000,
+     0b10010000,
+     0b11110000,
+     0b10010000,
+     0b10010000
+glyph_e:
+data 0b11110000,
+     0b10000000,
+     0b11000000,
+     0b10000000,
+     0b11110000
+glyph_l:
+data 0b10000000,
+     0b10000000,
+     0b10000000,
+     0b10000000,
+     0b11110000
+glyph_o:
+data 0b11110000,
+     0b10010000,
+     0b10010000,
+     0b10010000,
+     0b11110000
+
+start:
+	ld v0, 1
+	ld v1, 1
+
+	ld i, glyph_h
+	disp v0, v1, 5
+
+	add v0, 5
+
+	ld i, glyph_e
+	disp v0, v1, 5
+
+	add v0, 5
+
+	ld i, glyph_l
+	disp v0, v1, 5
+
+	add v0, 5
+
+	disp v0, v1, 5
+
+	add v0, 5
+
+	ld i, glyph_o
+	disp v0, v1, 5
+
+loop:
+	; stop the program counter from incrementing
+	jmp loop

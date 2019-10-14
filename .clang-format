@@ -1,0 +1,14 @@
+---
+Language: Cpp
+DerivePointerAlignment: false
+PointerAlignment: Left
+Cpp11BracedListStyle: true
+ColumnLimit: 99
+IndentWidth: 2
+UseTab: Never
+ContinuationIndentWidth: 2
+BinPackArguments: false
+AlignAfterOpenBracket: DontAlign
+AllowShortFunctionsOnASingleLine: InlineOnly
+BreakConstructorInitializers: BeforeColon
+AlwaysBreakTemplateDeclarations: Yes

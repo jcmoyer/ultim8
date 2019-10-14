@@ -1,0 +1,47 @@
+; hires
+data 0x00, 0xFF
+
+call next
+call next
+call next
+call next
+call next
+call next
+call next
+call next
+call next
+call next
+
+ld v0,8
+ld v1,16
+ld i, bigsprite
+disp v0, v1, 0
+
+loop:
+  jmp loop
+
+next:
+  data 0xF0, 0x30
+  add v0, 1
+  disp v1,v2,10
+  add v1, 10
+  ret
+
+bigsprite:
+  data 0b11111111, 0b11111111
+  data 0b11000000, 0b00000011
+  data 0b10100000, 0b00000101
+  data 0b10010000, 0b00001001
+  data 0b10001000, 0b00010001
+  data 0b10000100, 0b00100001
+  data 0b10000010, 0b01000001
+  data 0b10000001, 0b10000001
+  data 0b10000001, 0b10000001
+  data 0b10000010, 0b01000001
+  data 0b10000100, 0b00100001
+  data 0b10001000, 0b00010001
+  data 0b10010000, 0b00001001
+  data 0b10100000, 0b00000101
+  data 0b11000000, 0b00000011
+  data 0b11111111, 0b11111111
+

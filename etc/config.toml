@@ -1,0 +1,47 @@
+# Keyboard mapping
+#
+# The original cosmac VIP keyboard layout looks like this:
+#
+# 1 2 3 C
+# 4 5 6 D
+# 7 8 9 E
+# A 0 B F
+#
+# See SDL documentation on SDL_Keycode for valid key names
+[input]
+1 = "SDLK_1"
+2 = "SDLK_2"
+3 = "SDLK_3"
+c = "SDLK_4"
+
+4 = "SDLK_q"
+5 = "SDLK_w"
+6 = "SDLK_e"
+d = "SDLK_r"
+
+7 = "SDLK_a"
+8 = "SDLK_s"
+9 = "SDLK_d"
+e = "SDLK_f"
+
+a = "SDLK_z"
+0 = "SDLK_x"
+b = "SDLK_c"
+f = "SDLK_v"
+
+reload = "SDLK_F5"
+toggle_debugger = "SDLK_F9"
+increase_cycles = "SDLK_PAGEUP"
+decrease_cycles = "SDLK_PAGEDOWN"
+
+[audio]
+frequency = 48000
+# Lower buffer size means higher timer accuracy but more cpu usage
+samples = 256
+
+[display]
+background = [0x11, 0x31, 0x52]
+foreground = [0xac, 0xd5, 0xff]
+
+[debug]
+visible = false

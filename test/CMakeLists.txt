@@ -1,0 +1,10 @@
+function(declare_test test_name)
+  add_executable(${test_name} ${test_name}.cpp)
+  target_link_libraries(${test_name} catch2 ultim8emu ultim8asm)
+  target_include_directories(${test_name} PRIVATE "${CMAKE_SOURCE_DIR}/include")
+  set_target_properties(${test_name} PROPERTIES CXX_STANDARD 17)
+  add_test(${test_name} ${test_name})
+endfunction()
+
+add_subdirectory("common")
+add_subdirectory("emu")

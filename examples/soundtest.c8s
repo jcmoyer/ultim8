@@ -1,0 +1,36 @@
+ld v2, 28
+ld v3, 12
+
+loop:
+  ld i, sprite
+  disp v2, v3, 8
+
+	; 500ms of sound
+	ld v0, 30
+	ld st, v0
+
+	; wait 1000ms in two 500ms parts before retriggering
+  ; timers count down asynchronously, so we have to wait for dt to hit zero
+  ; before continuing as it is the only value guaranteed to not be skipped
+	ld v1, 30
+	ld dt, v1
+
+wait1:
+  ld v1, dt
+	skne v1, 0
+	jmp wait1exit
+	jmp wait1
+
+wait1exit:
+  disp v2, v3, 8
+  ld v1, 30
+  ld dt, v1
+
+wait2:
+	ld v1, dt
+	skne v1, 0
+	jmp loop
+	jmp wait2
+	
+sprite:
+  data 0x12, 0x31, 0x75, 0xF5, 0xF5, 0x75, 0x31, 0x12

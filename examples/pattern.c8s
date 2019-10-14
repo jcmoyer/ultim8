@@ -1,0 +1,11 @@
+; run at 1000 cycles/sec
+ld i, sprite
+loop:
+  disp v0, v1, 1
+  rand v2, 0b11
+  add v1, v2
+  add v0, 2
+  shl v1, v1
+  jmp loop
+
+sprite: data 0b1010101

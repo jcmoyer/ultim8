@@ -1,0 +1,39 @@
+; this is a test rom to make sure input is working properly
+
+ld v1, 0            ; x
+ld v2, 2            ; y
+ld v3, 8            ; iterations
+ld v4, 8            ; offset per sprite block
+ld i, text          ; pointer to sprite block
+
+textloop:
+  disp v1, v2, 8    ; draw a sprite block...
+  add v1, 8         ; move right 8 pixels
+  add i, v4         ; increment i pointer
+  add v3, 0xff      ; subtract one from remaining iterations
+  skeq v3, 0        ; exit when there is nothing left to draw
+  jmp textloop
+
+ld v1, 30           ; x
+ld v2, 12           ; y
+ld v6, 0xff         ; last input (0xff = no input)
+
+loop:
+  input v5          ; read key into v5
+  skeq v6, 0xff     ; if we haven't set v6 yet, there is nothing to clear
+  disp v1, v2, 5    ; i is pointing to the sprite for the last input, so
+                    ; drawing it again will clear the display
+  glyph v5          ; get sprite for the key that was pressed
+  disp v1, v2, 5    ; draw it
+  ld v6, v5         ; setting v6 will allow us to clear the previous sprite
+  jmp loop
+
+text:
+data 0x38,0x24,0x24,0x24,0x38,0x20,0x20,0x00
+data 0xE7,0x94,0x94,0xE7,0xA4,0x94,0x97,0x00
+data 0x9C,0x10,0x10,0x8C,0x02,0x02,0x9C,0x00
+data 0x70,0x40,0x40,0x30,0x08,0x08,0x70,0x00
+data 0x04,0x06,0x0A,0x0A,0x0F,0x09,0x11,0x00
+data 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
+data 0x97,0xA4,0xC4,0xC7,0xA4,0xA4,0x97,0x00
+data 0xA2,0x14,0x14,0x88,0x08,0x08,0x88,0x00

@@ -1,0 +1,4 @@
+ld v0, 123
+cls
+skeq v0, 123
+ld 1, 2       ; there is no ld that takes two immediates
