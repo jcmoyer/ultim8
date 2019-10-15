@@ -4,12 +4,12 @@ A highly configurable chip-8 emulator and assembler.
 
 # Dependencies
 
-- SDL2
-- gl3w
-- imgui
-- fmt
-- catch2
-- toml11
+- [SDL2](https://www.libsdl.org/)
+- [gl3w](https://github.com/skaslev/gl3w)
+- [imgui](https://github.com/ocornut/imgui/)
+- [fmt](https://github.com/fmtlib/fmt)
+- [catch2](https://github.com/catchorg/Catch2/)
+- [toml11](https://github.com/ToruNiina/toml11/)
 
 Currently, these libraries are vendored for convenience and reproducibility.
 
