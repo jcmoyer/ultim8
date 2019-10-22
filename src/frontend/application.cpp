@@ -108,64 +108,64 @@ std::vector<uint8_t> compile_demo() {
   return compile(source);
 }
 
-void application::handle_quit(const SDL_Event& ev) {
+void application::handle_quit(const SDL_QuitEvent& ev) {
   running = false;
 }
 
-void application::handle_window_event(const SDL_Event& ev) {
-  if (ev.window.event == SDL_WINDOWEVENT_CLOSE) {
+void application::handle_window_event(const SDL_WindowEvent& ev) {
+  if (ev.event == SDL_WINDOWEVENT_CLOSE) {
     running = false;
-  } else if (ev.window.event == SDL_WINDOWEVENT_RESIZED) {
+  } else if (ev.event == SDL_WINDOWEVENT_RESIZED) {
     update_viewport();
   }
 }
 
-void application::handle_key_down(const SDL_Event& ev) {
-  if (chip8_key k; map_sdl_key(cfg.input.kmap, ev.key.keysym.sym, k)) {
+void application::handle_key_down(const SDL_KeyboardEvent& ev) {
+  if (chip8_key k; map_sdl_key(cfg.input.kmap, ev.keysym.sym, k)) {
     chip8->inp.set_key_state(k, true);
   }
-  if (ev.key.keysym.sym == SDLK_g) {
+  if (ev.keysym.sym == SDLK_g) {
     paused = !paused;
     debug->notify_pause_state(paused);
   }
-  if (ev.key.keysym.sym == SDLK_h) {
+  if (ev.keysym.sym == SDLK_h) {
     chip8->step();
   }
-  if (ev.key.keysym.sym == cfg.input.reload && filename) {
+  if (ev.keysym.sym == cfg.input.reload && filename) {
     load_file(filename->c_str());
   }
-  if (ev.key.keysym.sym == cfg.input.toggle_debugger) {
+  if (ev.keysym.sym == cfg.input.toggle_debugger) {
     debug->toggle_visibility();
     // keep focus on this window
     SDL_RaiseWindow(window);
   }
-  if (ev.key.keysym.sym == cfg.input.increase_cycles) {
-    const int amt = ev.key.keysym.mod & KMOD_LCTRL ? 10000 : 1000;
+  if (ev.keysym.sym == cfg.input.increase_cycles) {
+    const int amt = ev.keysym.mod & KMOD_LCTRL ? 10000 : 1000;
     cpu_freq.hz(cpu_freq.hz() + amt);
     update_title();
   }
-  if (ev.key.keysym.sym == cfg.input.decrease_cycles) {
-    const int amt = ev.key.keysym.mod & KMOD_LCTRL ? 10000 : 1000;
+  if (ev.keysym.sym == cfg.input.decrease_cycles) {
+    const int amt = ev.keysym.mod & KMOD_LCTRL ? 10000 : 1000;
     cpu_freq.hz(cpu_freq.hz() - amt);
     if (cpu_freq.hz() < 1000)
       cpu_freq.hz(1000);
     update_title();
   }
-  if (ev.key.keysym.sym == SDLK_RETURN && ev.key.keysym.mod & KMOD_LCTRL) {
+  if (ev.keysym.sym == SDLK_RETURN && ev.keysym.mod & KMOD_LCTRL) {
     toggle_fullscreen();
   }
 }
 
-void application::handle_key_up(const SDL_Event& ev) {
+void application::handle_key_up(const SDL_KeyboardEvent& ev) {
   chip8_key input;
-  if (map_sdl_key(cfg.input.kmap, ev.key.keysym.sym, input)) {
+  if (map_sdl_key(cfg.input.kmap, ev.keysym.sym, input)) {
     chip8->inp.set_key_state(input, false);
   }
 }
 
-void application::handle_drop_file(const SDL_Event& ev) {
-  load_file(ev.drop.file);
-  SDL_free(ev.drop.file);
+void application::handle_drop_file(const SDL_DropEvent& ev) {
+  load_file(ev.file);
+  SDL_free(ev.file);
 }
 
 void application::handle_events() {
@@ -180,19 +180,19 @@ void application::handle_events() {
 
     switch (ev.type) {
     case SDL_QUIT:
-      handle_quit(ev);
+      handle_quit(ev.quit);
       break;
     case SDL_WINDOWEVENT:
-      handle_window_event(ev);
+      handle_window_event(ev.window);
       break;
     case SDL_KEYDOWN:
-      handle_key_down(ev);
+      handle_key_down(ev.key);
       break;
     case SDL_KEYUP:
-      handle_key_up(ev);
+      handle_key_up(ev.key);
       break;
     case SDL_DROPFILE:
-      handle_drop_file(ev);
+      handle_drop_file(ev.drop);
       break;
     }
   }

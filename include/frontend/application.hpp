@@ -36,11 +36,11 @@ public:
 
 private:
   void handle_events();
-  void handle_drop_file(const SDL_Event& ev);
-  void handle_key_up(const SDL_Event& ev);
-  void handle_key_down(const SDL_Event& ev);
-  void handle_window_event(const SDL_Event& ev);
-  void handle_quit(const SDL_Event& ev);
+  void handle_drop_file(const SDL_DropEvent& ev);
+  void handle_key_up(const SDL_KeyboardEvent& ev);
+  void handle_key_down(const SDL_KeyboardEvent& ev);
+  void handle_window_event(const SDL_WindowEvent& ev);
+  void handle_quit(const SDL_QuitEvent& ev);
 
   void handle_command_line(int argc, char* argv[]);
 
