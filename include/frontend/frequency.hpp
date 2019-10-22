@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef EMU_FREQUENCY_HPP
-#define EMU_FREQUENCY_HPP
+#ifndef FRONTEND_FREQUENCY_HPP
+#define FRONTEND_FREQUENCY_HPP
 
 #include <chrono>
 

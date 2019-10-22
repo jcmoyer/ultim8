@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef NUMERIC_CAST_HPP
-#define NUMERIC_CAST_HPP
+#ifndef COMMON_INTEGRAL_CAST_HPP
+#define COMMON_INTEGRAL_CAST_HPP
 
 #include <limits>
 #include <stdexcept>

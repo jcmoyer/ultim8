@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef FRONTEND_COLOR_YAML_HPP
-#define FRONTEND_COLOR_YAML_HPP
+#ifndef FRONTEND_COLOR_TOML_HPP
+#define FRONTEND_COLOR_TOML_HPP
 
 #include <toml.hpp>
 #include "frontend/color.hpp"

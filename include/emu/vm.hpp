@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef EMU_EMULATOR_HPP
-#define EMU_EMULATOR_HPP
+#ifndef EMU_VM_HPP
+#define EMU_VM_HPP
 
 #include <array>
 #include <vector>

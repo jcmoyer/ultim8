@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef EMU_RENDERER_HPP
-#define EMU_RENDERER_HPP
+#ifndef FRONTEND_RENDERER_HPP
+#define FRONTEND_RENDERER_HPP
 
 #include <GL/gl3w.h>
 #include "frontend/color.hpp"

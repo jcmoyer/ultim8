@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef CHIP8_FRAMEBUFFER_HPP
-#define CHIP8_FRAMEBUFFER_HPP
+#ifndef EMU_FRAMEBUFFER_HPP
+#define EMU_FRAMEBUFFER_HPP
 
 #include <vector>
 #include <cstdint>

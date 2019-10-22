@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef AUDIO_HPP
-#define AUDIO_HPP
+#ifndef FRONTEND_AUDIO_HPP
+#define FRONTEND_AUDIO_HPP
 
 #include <vector>
 #include <SDL.h>
