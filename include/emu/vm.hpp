@@ -61,6 +61,15 @@ inline constexpr const char* cpu_status_str(cpu_status s) {
   }
 }
 
+enum class compat_flags {
+  none = 0,
+  shift_in_place = 1
+};
+
+inline constexpr bool operator&(const compat_flags& x, const compat_flags& y) {
+  return static_cast<int>(x) & static_cast<int>(y);
+}
+
 class chip8vm {
 public:
   // XO sized roms fit in 64k of ram, however we add some additional padding to
@@ -81,6 +90,7 @@ public:
   framebuffer framebuf{64, 32};
   input_state inp;
   cpu_status status = cpu_status::ok;
+  compat_flags cflags = compat_flags::none;
   uint16_t pc{PROGRAM_START};
   uint16_t i{0};
   uint8_t dt{0};
@@ -98,6 +108,7 @@ public:
     lores();
     inp.clear();
     status = cpu_status::ok;
+    cflags = compat_flags::none;
     pc = PROGRAM_START;
     i = 0;
     dt = 0;

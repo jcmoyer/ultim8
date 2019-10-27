@@ -329,6 +329,9 @@ inline void chip8vm::sub(variable a, variable b) {
 
 // 0x8006
 inline void chip8vm::shr(variable a, variable b) {
+  if (cflags & compat_flags::shift_in_place) {
+    b = a;
+  }
   uint8_t result = variables[b] >> 1;
   vf(variables[b] & 0b00000001);
   variables[a] = result;
@@ -343,6 +346,9 @@ inline void chip8vm::subn(variable a, variable b) {
 
 // 0x800E
 inline void chip8vm::shl(variable a, variable b) {
+  if (cflags & compat_flags::shift_in_place) {
+    b = a;
+  }
   uint8_t result = variables[b] << 1;
   vf(variables[b] & 0b10000000);
   variables[a] = result;
