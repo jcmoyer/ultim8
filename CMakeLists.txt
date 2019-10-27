@@ -9,7 +9,7 @@ add_subdirectory("src")
 
 if(${ULTIM8_BUILD_TESTS})
   enable_testing()
-  add_subdirectory("test" EXCLUDE_FROM_ALL)
+  add_subdirectory("test")
 endif()
 
 add_subdirectory("etc")
