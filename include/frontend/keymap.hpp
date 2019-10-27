@@ -29,6 +29,6 @@ struct bad_key_name : std::runtime_error {
 
 using keymap = std::map<SDL_Keycode, chip8_key>;
 
-SDL_Keycode to_sdl_key(const std::string& keyname);
+SDL_Keycode to_sdl_key(std::string_view keyname);
 
 #endif

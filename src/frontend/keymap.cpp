@@ -13,10 +13,11 @@
 // limitations under the License.
 
 #include "frontend/keymap.hpp"
+#include <unordered_map>
 
-SDL_Keycode to_sdl_key(const std::string& s) {
+SDL_Keycode to_sdl_key(std::string_view s) {
   // yes, macros - very spooky
-  const static std::map<std::string, SDL_Keycode> sdl_key_map{
+  const static std::unordered_map<std::string_view, SDL_Keycode> sdl_key_map{
 #define KEY(name) {"" #name, name},
 #include "frontend/keys.def"
   };
@@ -24,6 +25,6 @@ SDL_Keycode to_sdl_key(const std::string& s) {
   if (auto it = sdl_key_map.find(s); it != sdl_key_map.end()) {
     return it->second;
   } else {
-    throw bad_key_name("invalid key", s);
+    throw bad_key_name("invalid key", std::string(s));
   }
 }

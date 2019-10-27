@@ -41,9 +41,17 @@ if(WIN32)
   target_compile_definitions(ultim8 PRIVATE NOMINMAX)
 endif()
 
-target_compile_options(ultim8 PRIVATE $<$<CXX_COMPILER_ID:GNU>:-Wall>)
-target_compile_options(ultim8emu PRIVATE $<$<CXX_COMPILER_ID:GNU>:-Wall>)
-target_compile_options(ultim8asm PRIVATE $<$<CXX_COMPILER_ID:GNU>:-Wall>)
-target_compile_options(ultim8c PRIVATE $<$<CXX_COMPILER_ID:GNU>:-Wall>)
+set(
+  ULTIM8_CXX_FLAGS
+  $<$<CXX_COMPILER_ID:GNU>:-Wall>
+  # MSVC requires this flag to set the correct value for __cplusplus;
+  # required for string_view support in toml11
+  $<$<CXX_COMPILER_ID:MSVC>:/Zc\:__cplusplus>
+)
+
+target_compile_options(ultim8 PRIVATE ${ULTIM8_CXX_FLAGS})
+target_compile_options(ultim8emu PRIVATE ${ULTIM8_CXX_FLAGS})
+target_compile_options(ultim8asm PRIVATE ${ULTIM8_CXX_FLAGS})
+target_compile_options(ultim8c PRIVATE ${ULTIM8_CXX_FLAGS})
 
 install(TARGETS ultim8 ultim8c RUNTIME DESTINATION .)
